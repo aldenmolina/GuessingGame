@@ -3,7 +3,7 @@ using Xunit;
 
 namespace GuessingGame.tests
 {
-    public class UnitTest1
+    public class GuessingGameTest
     {
         [Fact]
         public void Test1()

@@ -15,32 +15,38 @@ namespace GuessingGame
 
             while (guess != num && tries != 3)
             {
-                guess = Convert.ToInt32(Console.ReadLine());
+                guess = int.Parse(Console.ReadLine());
+                tries++;
+                Console.WriteLine("Round: " + tries + " of 3");
 
                 if (guess == num)
                 {
-                    Console.WriteLine("You are correct!");    
+                    Console.WriteLine("You are correct!");
                     
-                }
-                else if (guess < num)
-                {
-                    Console.WriteLine("Your number is less than my number. Try again!");
-                    continue;
-                }
-                else if (guess > num)
-                {
-                    Console.WriteLine("Your number is greater than my number. Try again!");
-                    continue;
                 }
                 else if (guess == 0)
                 {
-                    Console.WriteLine("You must pick a number between 1 and 10");
+                    Console.WriteLine("You must pick a number between 1 and 10.");
+                    
                     continue;
                 }
-                else 
+                else if (guess < 1 || guess > 10)
                 {
-                    Console.WriteLine("That is not a valid answer.");
+                    Console.WriteLine("Error: Not a valid number!");
+                   
                     break;
+                }
+                else if (guess > num)
+                {
+                    Console.WriteLine("Your number is higher than my number. Try again!");
+                    
+                    continue;
+                }
+                else if (guess < num)
+                {
+                    Console.WriteLine("Your number is lower than my number. Try again!");
+
+                    continue;
                 }
             }
         }
