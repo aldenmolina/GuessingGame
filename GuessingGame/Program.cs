@@ -11,7 +11,7 @@ namespace GuessingGame
             int guess = 0;
             int tries = 0;
 
-            Console.WriteLine("I am thinking of a number from 1 to 10. Can you guess it?");
+            Console.WriteLine("I am thinking of a number from 1 to 10. Can you guess what it is?");
 
             while (guess != num && tries != 3)
             {
