@@ -15,37 +15,53 @@ namespace GuessingGame
 
             while (guess != num && tries != 3)
             {
-                guess = int.Parse(Console.ReadLine());
-                tries++;
-                Console.WriteLine("Round: " + tries + " of 3");
+                try
+                {
+                    guess = int.Parse(Console.ReadLine());
+                    tries++;
+                    Console.WriteLine("Round: " + tries + " of 3");
+                    Console.WriteLine("You guessed " + guess);
 
-                if (guess == num)
-                {
-                    Console.WriteLine("You are correct!");
-                    
+                    if (guess.Equals(num))
+                    {
+                        Console.WriteLine("You are correct!");
+
+                    }
+                    else if (guess.Equals(0))
+                    {
+                        Console.WriteLine("You must pick a number between 1 and 10.");
+
+                        continue;
+                    }
+                    else if (guess < 1 || guess > 10)
+                    {
+                        Console.WriteLine("Error: Not a valid number! Pick a number between 1 and 10");
+
+                        break;
+                    }
+                    else if (guess > num)
+                    {
+                        Console.WriteLine("Your number is higher than my number. Try again!");
+
+                        continue;
+                    }
+                    else if (guess < num)
+                    {
+                        Console.WriteLine("Your number is lower than my number. Try again!");
+
+                        continue;
+                    }
+                
                 }
-                else if (guess == 0)
+                catch (FormatException)
                 {
-                    Console.WriteLine("You must pick a number between 1 and 10.");
-                    
-                    continue;
-                }
-                else if (guess < 1 || guess > 10)
-                {
-                    Console.WriteLine("Error: Not a valid number!");
-                   
+                    Console.WriteLine("Invalid Number. Exiting program.");
                     break;
                 }
-                else if (guess > num)
+                catch (OverflowException)
                 {
-                    Console.WriteLine("Your number is higher than my number. Try again!");
+                    Console.WriteLine("Your number is too big! Pick a number between 1 and 10.");
                     
-                    continue;
-                }
-                else if (guess < num)
-                {
-                    Console.WriteLine("Your number is lower than my number. Try again!");
-
                     continue;
                 }
             }
